@@ -1,0 +1,534 @@
+/*	################################################################
+	GENERAL STRUCTURE
+################################################################# */
+/*  There are many approaches to do a 3 column layout. http://css-discuss.incutio.com/wiki/Three_Column_Layouts
+
+    Don't use tables – they aren't semantically cool
+
+    You can use CSS Floats. It is common to do entire web layouts using the CSS float property. 
+    Float is easy to learn - you just need to remember how the float and clear properties work. 
+    Disadvantages: Floating elements are tied to the document flow, which may harm the flexibility. 
+    Learn more about float here: https://www.w3schools.com/css/css_float.asp
+
+    You can use Matthew James Taylor methods of percentages layered 
+
+    You can CSS Frameworks: like Bootstrap, Skeleton, or 960 grid systemhttp://960.gs/
+
+    You can use Flexbox
+
+    You can use CSS Grid 
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Arvo');
+
+html, body, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html{
+	background:#FAEFDF;
+    font-size: 62.5%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body{
+	color:#EBE863;
+    background:transparent;
+    text-rendering: optimizeLegibility;
+    font: 16px/1.4 'Arvo', Verdana, Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
+    font-weight:bolder;
+}
+@media (min-width: 48em) {
+    body {
+        font-size: 18px;
+        font-size: 1.8rem
+    }
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;   /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+    padding-right: 15px;
+    padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+}
+
+h1 {
+    margin-bottom: 1.35rem;
+    font-size: 32px;
+    font-size: 3.2rem;
+    font-weight: 700
+}
+@media (min-width: 48em) {
+    h1 {
+        font-size: 38px;
+        font-size: 3.8rem
+    }
+}
+h2 {
+    margin-bottom: 1.35rem;
+    font-size: 24px;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.3
+}
+@media (min-width: 48em) {
+    h2 {
+        font-size: 32px;
+        font-size: 3.2rem
+    }
+}
+p+h2 {
+    margin-top: 0.9rem
+}
+h3 {
+    margin-bottom: 0.675rem;
+    font-size: 21px;
+    font-size: 2.1rem;
+    font-weight: 700;
+    line-height: 1.3
+}
+@media (min-width: 48em) {
+    h3 {
+        font-size: 24px;
+        font-size: 2.4rem
+    }
+}
+h4 {
+    margin-bottom: 0.675rem;
+    font-size: 18px;
+    font-size: 1.8rem;
+    font-weight: 700
+}
+@media (min-width: 48em) {
+    h4 {
+        font-size: 21px;
+        font-size: 2.1rem
+    }
+}
+h5 {
+    margin-bottom: 0.675rem;
+    font-size: 14px;
+    font-size: 1.4rem;
+    font-weight: 700
+}
+@media (min-width: 48em) {
+    h5 {
+        font-size: 16px;
+        font-size: 1.6rem
+    }
+}
+h1 {
+	font-size: 2em;
+}
+
+a {
+    text-decoration:none;
+}
+a:link {
+    color: #42413C;
+}
+a:visited {
+    color: #6E6C64;
+    text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* this gives a keyboard navigator the same hover experience as using a mouse. */
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    border-width: 0;
+    vertical-align: middle;
+}
+
+/*  Sticky Footer for Nav Bar */
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+ul li {
+    float: left;
+    border-bottom: 1px solid #666;
+}
+
+ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul li a:hover:not(.active) {
+    background-color: #67DDA2;
+}
+
+
+ul.nav a, ul.nav a:visited { 
+    padding: 5px 5px 5px 15px;
+    display: block; 
+ /*   width: 160px; */ 
+    text-decoration: none;
+    background: #C6D580;
+}
+
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* this changes the background and text color for both mouse and keyboard navigators */
+    background: #ADB96E;
+    color: #FFF;
+}
+
+.active {
+    background-color: lime;
+}
+
+
+/* Not Nav */
+.container {
+	max-width: 960px;
+	margin: 0 auto;
+	overflow: hidden; /* this declaration makes the .container understand where the floated columns within ends and contain them */
+}
+
+.header {
+	margin: 0;
+    padding: 0.5em 1em;
+    text-align:left;
+}
+
+section {
+	min-height:500px;
+    padding:40px 0;
+}
+#first {
+	background: #9BF2C3;
+}
+#second {
+	background: #BC8CEF;
+}
+#third {
+	background: #E197B6;
+}
+#fourth {
+	background: #96DFF0 ;
+}
+#fifth {
+	background: #b8aafe;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    width:100%;
+    height:100%;
+}
+/*#DC9FE4 pink again*/
+
+/* ===== FIRST APPROACH ===== */
+
+/*.col-1{
+
+
+}
+.col-2 {
+margin-left: 34.6667%;
+}
+.col-3 {
+
+}
+.first-col {
+    float: left;
+    width: 30.6667%;
+    margin-right: -100%;
+}*/
+
+
+/* ===== SECOND APPROACH ===== */
+/*.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}*/
+/*.fltrt {  
+    float: right;
+    margin-left: 8px;
+}
+.fltlft { 
+    float: left;
+    margin-right: 8px;
+}
+.clearfloat { 
+    clear:both;
+    height:0;
+    font-size: 1px;
+    line-height: 0px;
+}
+
+.column {
+    float: left;
+    position: relative;
+    width: 20%;
+    background: #f2f2f2;
+    border: 1px solid #e6e6e6;
+    padding-bottom:10px;
+}
+
+.column-offset-1 {
+    left: 20%;
+}
+.column-offset-2 {
+    left: 40%;
+}
+.column-offset-3 {
+    left: 60%;
+}
+.column-offset-4 {
+    left: 80%;
+}
+
+.column-inset-1 {
+    left: -20%;
+}
+.column-inset-2 {
+    left: -40%;
+}
+.column-inset-3 {
+    left: -60%;
+}
+.column-inset-4 {
+    left: -80%;
+}*/
+
+/* ===== THIRD APPROACH ===== */
+
+
+
+/* ===== FOURTH APPROACH ===== */
+
+.flex-container {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    text-align:center;
+    background:#EBE863;
+    flex-flow: row wrap;
+}
+.flex-item {
+    background-color:#BC8CEF;
+    width: 32%;
+    margin:10px 5px;
+}
+
+/* Small screens */
+@media all and (max-width: 500px) {
+  .navigation {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+
+/*.item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: #0c9a9a;
+  grid-column-start: auto;
+  grid-row-start: auto;
+  color: #fff;
+  background: url('https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=');
+  background-size: cover;
+  background-position: center;
+  box-shadow: -2px 2px 10px 0px rgba(#444, 0.4);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  counter-increment: item-counter;
+}
+   .item:nth-of-type(3n) {
+    background-image: url('https://images.unsplash.com/photo-1422255198496-21531f12a6e8?dpr=2&auto=format&fit=crop&w=1500&h=996&q=80&cs=tinysrgb&crop=');
+  }
+
+  .item:nth-of-type(4n) {
+    background-image: url('https://images.unsplash.com/photo-1490914327627-9fe8d52f4d90?dpr=2&auto=format&fit=crop&w=1500&h=2250&q=80&cs=tinysrgb&crop=');
+  }
+
+  .item:nth-of-type(5n) {
+    background-image: url('https://images.unsplash.com/photo-1476097297040-79e9e1603142?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=');
+  }
+
+  .item:nth-of-type(6n) {
+    background-image: url('https://images.unsplash.com/photo-1464652149449-f3b8538144aa?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=');
+  }
+
+  :after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+ :hover {
+    transform: scale(1.05);
+
+    :after {
+      opacity: 0;
+    }
+  }
+
+ medium {
+    grid-row-end: span 2;
+  }
+
+ large {
+    grid-row-end: span 3;
+  }
+
+full {
+    grid-column-end: auto;
+
+    @media screen and (min-width: 768px) {
+      grid-column: 1/-1;
+      grid-row-end: span 2;
+    }
+  }
+
+  details {
+    position: relative;
+    z-index: 1;
+    padding: 15px;
+    color: #444;
+    background: #fff;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    color: #828282;
+
+    :before {
+      content: counter(item-counter);
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding-right: 0.5em;
+      color: #444;
+    }
+  }
+}*/
+
+
+
+/*.flex-container {
+    display:flex;
+    flex-flow: row wrap;
+    text-align:center;
+    background:#9BF2C3;
+}
+.flex-item {
+    background-color:#BC8CEF;
+    width: 32%;
+   margin:5px;
+}
+.column {
+    flex: 1;
+    background: #f2f2f2;
+    border: 1px solid #e6e6e6;
+    box-sizing: border-box;
+}
+
+.column-one {
+    order: 3;
+}
+.column-two {
+    order: 1;
+}
+.column-three {
+    order: 4;
+}
+.column-four {
+    order: 2;
+}
+.column-five {
+    order: 5;
+}*/
+
+
+/* ===== FIFTH APPROACH ===== */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap:6px;
+    grid-auto-rows: 150px;
+    grid-auto-flow: row dense;
+    background-color:peru;
+    width: 960px;
+}
+
+/*  grid-template-columns: repeat(3, 1fr);
+/*repeat(auto-fit, minmax(300px, 1fr))*/
+/*  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);*/
+
+
+.column {
+    flex: 1;
+    background: #f2f2f2;
+    border: 1px solid #e6e6e6;
+    box-sizing: border-box;
+}
+
+.column-one-grid {
+    order: 3;
+}
+.column-two-grid {
+    order: 1;
+}
+.column-three-grid {
+    order: 4;
+}
+.column-four-grid {
+    order: 2;
+}
+.column-five-grid {
+    order: 5;
+}
+/*img{ 
+margin:20px; }*/
+
+/*@media (min-width: 48em) {
+    body {
+        font-size: 18px;
+        font-size: 1.8rem;
+    }
+    h1 {
+        font-size: 38px;
+        font-size: 3.8rem
+    }
+    h2 {
+        font-size: 32px;
+        font-size: 3.2rem
+    }
+    h3 {
+        font-size: 24px;
+        font-size: 2.4rem
+    }
+}*/
