@@ -1,0 +1,321 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+/* ---------------------------------------------- /*
+ * Global
+/* ---------------------------------------------- */
+/**,
+*:before,
+*:after {
+  box-sizing: border-box;
+}*/
+
+ul, menu, dir {
+    display: block;
+    list-style-type: none;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 10;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-start: 0;
+}
+
+body {
+  color: whitesmoke;
+	font-family: 'Roboto Slab',  Garamond, "Apple Garamond", sans-serif;
+  line-height: 1.4;
+  font-weight: 300;
+  font-size:16px;
+  margin:0;
+  background-color:#464641;
+  background-image:url("images/linen.png");
+}
+
+::selection {
+    color: #ac261d; 
+    background: #c6bc64;
+}
+
+/* ---------------------------------------------- /*
+ * Typography
+/* ---------------------------------------------- */
+h1 {
+	font-family: 'Lobster', cursive;
+	color: #c6bc64;
+	font-size:6em;
+}
+/* goat milk soap and our story */
+h2 {
+	font-size:1.8em;
+	padding-top: 20px;
+	color:#abbd9a;
+}
+
+span {
+	color:ivory;
+}
+
+small {
+  color:#994c04;
+}
+
+/* tagline */
+h3 {
+  font-weight:300;
+	text-align:center;
+	color:lightgrey;
+	font-size:22px;
+	background-color: #6D3602;
+	margin-bottom:40px;
+	text-transform: uppercase;
+  display:inline-block;
+  padding: 10px 40px;
+}
+
+h4 {
+  color:ivory;
+  font-size:1.5em;
+}
+
+h5 {
+  font-size:3.6em;
+}
+
+p {
+ font-size:1.2em;
+}
+
+.container {
+  width: 980px;
+  margin: 0 auto;
+}
+
+section {
+  padding-bottom:60px;
+}
+
+.about-me{
+}
+
+.gallery{
+}
+
+.contact{ 
+  padding-top:60px;
+}
+/* ---------------------------------------------- /*
+ * Header
+/* ---------------------------------------------- */
+
+header {
+  margin-bottom:40px;
+}
+
+nav ul {
+  background: darkkhaki;
+  margin: 0; 
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  justify-content: flex-end;
+}
+
+nav ul a {
+  color: #464641;
+  text-decoration: none;
+  padding: 1em;
+  display: block;
+}
+
+nav ul a:hover {
+  color:ivory;
+  background-color:#c6bc64;
+}
+
+/* ---------------------------------------------- /*
+ * About
+/* ---------------------------------------------- */
+
+/* ---------------------------------------------- /*
+ * Gallery
+/* ---------------------------------------------- */
+
+.gallery-wrapper {
+  padding: .5vw;
+  font-size: 0;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
+  -webkit-flex-flow: row wrap; 
+  flex-flow: row wrap; 
+  display: -webkit-box;
+  display: flex;
+}
+
+.box { 
+  position:relative;
+  -webkit-box-flex: auto;
+  -ms-flex: auto;
+  flex: auto; 
+  width: 300px; 
+  border: 2px solid transparent;  
+  transition: .3s ease-in-out, transform .3s ease-in-out;
+}
+
+.box:hover {
+  transform: scale(1.01);
+  border-color:maroon;
+}
+
+.box:before {
+  content: "";
+  position:relative;
+/*  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;*/
+  background-color: rgba(255,100, 0,.3);
+  transition: background-color .5s;
+}
+
+.box:hover:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0);
+}
+
+.box img { 
+  width: 100%;  
+}
+
+.box img:hover {
+ /* width:100%;*/
+}
+/* https://codepen.io/angela/pen/aVyERy */
+/*
+
+
+/* ---------------------------------------------- /*
+ * Social
+/* ---------------------------------------------- */
+
+.icons {
+  margin-right:10px; 
+  padding-right:20px;
+}
+
+.icons i {
+  color: #c6bc64;
+  font-size:42px;
+  margin-right:18px;
+  margin-top:24px;
+}
+
+.contact h4 a {
+  color:#c6bc64;
+  text-decoration: none;
+  padding-top:10px;
+}
+
+.icons a i:hover {
+  color:ivory;
+}
+
+/* ---------------------------------------------- /*
+ * Footer
+/* ---------------------------------------------- */
+footer {
+  padding-top:20px;
+	background-color:#572B01;
+	height:80px;
+  border-top:4px solid #90987d;
+}
+
+/* ---------------------------------------------- /*
+ * Media Queries
+/* ---------------------------------------------- */
+
+@media screen and (max-width: 1200px) {
+	header div {margin:0;}
+	header {padding-top: 0;}
+	.container{
+		width:90%;}
+	}
+
+@media all and (max-width: 800px) {
+  nav ul {
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 700px) {
+	h1 {font-size:4.25em; line-height:1.1;}
+  h2 {font-size:1.4em; padding-top:0;}
+  h3 {font-size:1em; line-height:1.1;}
+  h5 {font-size:2.6em; line-height:1.3;}
+  nav ul {padding-top:0;}
+  nav ul li {font-size: 15px; text-align:left; display:inline;
+  }
+}
+
+@media all and (max-width: 600px) {
+  nav ul {
+     padding: 0;
+    -webkit-flex-flow: column wrap;
+    flex-flow: column wrap; 
+  }
+  nav ul a { 
+    text-align: center; 
+    padding: 10px;
+    border-top: 1px solid rgba(255,255,255,0.3); 
+    border-bottom: 1px solid rgba(0,0,0,0.1); 
+  } 
+  nav ul li:last-of-type a {
+    border-bottom: none;
+  }
+}
+
+
+/* Color Palette 
+Orange: #f19837
+White green:fbfcf6
+Hover Pear Yellow Green:#c6bc64
+Dark grey: #464641;
+Tan Buff: #a5755d;
+Apothecray Saddle Brown #7d3213
+Sages #8b9a71,#858d6f, #abbd9a
+; 
