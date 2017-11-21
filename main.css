@@ -1,3 +1,4 @@
+/* Eric Meyer CSS reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -31,11 +32,13 @@ ol, ul {
 /* ---------------------------------------------- /*
  * Global
 /* ---------------------------------------------- */
-/**,
+/*
+
+*,
 *:before,
 *:after {
   box-sizing: border-box;
-}*/
+}
 
 ul, menu, dir {
   display: block;
@@ -53,7 +56,6 @@ body {
   line-height: 1.4;
   font-weight: 300;
   font-size:16px;
-  margin:0;
   background-color:#464641;
   background-image:url("images/linen.png");
 }
@@ -132,6 +134,14 @@ section {
 .contact{ 
   padding-top:60px;
 }
+
+/* ---------------------------------------------- /*
+ * PopUp Modal 
+/* ---------------------------------------------- */
+
+
+
+
 /* ---------------------------------------------- /*
  * Header
 /* ---------------------------------------------- */
